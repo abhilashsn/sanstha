@@ -1,0 +1,56 @@
+<div> 
+	<h2><%= @tutor.name%></h2>
+</div>
+
+<hr/>
+
+<div>
+<Strong>Name :</strong>
+<%= @tutor.name %>
+</div><br/>
+
+<div>
+<strong>qualification :</strong>
+<%= @tutor.qualification %>
+</div><br/>
+
+<div>
+<strong>Experience :</strong>
+<%= @tutor.experience %>
+</div><br/>
+
+<div>
+<strong>Address :</strong>
+<%= @tutor.address %>
+</div><br/>
+
+<div>
+<strong>Gender :</strong>
+<%= @tutor.gender %>
+</div><br/>
+
+<div>
+<strong>Mobile :</strong>
+<%= @tutor.mobile %>
+</div><br/>
+
+<div>
+<strong>Hourly Rate :</strong>
+<%= @tutor.hourly_rate %>
+</div><br/>
+
+<div>
+<strong>Location :</strong>
+<%= @tutor.location %>
+</div><br/>
+
+<div>
+<strong>Email :</strong>
+<%= @tutor.email %>
+</div><br/>
+
+
+<div>
+<%= button_to "Edit", edit_tutor_path(@tutor), :class => "btn btn-primary", :method => :get %> 
+<%= button_to "Delete", tutor_path(@tutor), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %> 
+</div>

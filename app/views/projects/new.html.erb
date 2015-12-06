@@ -1,0 +1,50 @@
+<div class= "row">
+  <div class="col-md-2">
+  </div>
+
+<div class="col-md-8">
+ 
+<div class="page-header">
+    <h3>Add New Project</h3>
+</div>
+
+
+<%= form_for @project do |f| %>
+
+<% if @project.errors.any? %>
+	<ul>
+        <% for msg in @project.errors.full_messages %>
+        <li><%= msg %></li>
+        <% end %>
+	</ul>
+<% end %>
+
+<label>Name :</label><br/>
+<%= f.text_field :name, class: "form-control", autofocus: true, placeholder: "Enter name here", required: true %><br/>
+
+<label>Description :</label><br/>
+<%= f.text_area :description, class: "form-control", autofocus: true, placeholder: "Enter description here", required: true  %><br/>
+
+<label>Status :</label><br/>
+<%= f.text_field :status, class: "form-control", autofocus: true, placeholder: "Enter status here", required: true  %><br/>
+
+<label>Start_date :</label><br/>
+<%= f.date_field :start_date, class: "form-control", autofocus: true, placeholder: "Enter date here", required: true %><br/>
+
+<br/>
+
+<%= button_tag(type: 'submit', class: "btn btn-warning") do %>
+ <i class="icon-ok icon-white"></i> create project
+<% end %>
+
+<% end %>
+</div>
+
+ <div class="col-md-2">
+  </div>
+
+</div>
+
+
+
+

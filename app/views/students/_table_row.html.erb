@@ -1,0 +1,14 @@
+   
+  <td><%= link_to student.name, student%></td>
+  <td><%= student.email%></td>
+  <td><%= student.mobile%></td>
+  <td><%= student.address %></td>
+  <% student.batches.each do |batch| %>
+  <td><%= batch.name %></td>
+  <%end%>
+
+
+
+
+            
+

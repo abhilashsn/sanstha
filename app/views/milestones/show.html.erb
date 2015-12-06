@@ -1,0 +1,64 @@
+<div> 
+	<h2><%= @milestone.title%></h2>
+</div>
+
+<hr/>
+
+
+<div>
+<Strong>Title :</strong>
+<%= @milestone.title %>
+</div><br/>
+
+<div>
+<strong>Milestone Status :</strong>
+<%= @milestone.is_completed %>
+</div><br/>
+
+<div>
+<strong>Due Date :</strong>
+<%= @milestone.due_date %>
+</div><br/>
+
+
+<div>
+<%= button_to "Edit", edit_project_milestone_path(@milestone.project_id, @milestone), :class => "btn btn-primary", :method => :get %> 
+<%= button_to "Delete", project_milestone_path(@milestone.project_id, @milestone), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %> 
+</div>
+
+
+
+
+<h3> Add Tasks </h3>
+
+
+<%= form_for([@milestone.tasks.build]) do |f| %>
+
+
+	<label> Name</label><br/>
+	<%= f.text_field :name%><br/>
+
+
+	<label> Due Date </label><br/>
+	<%= f.date_select :due_date%><br/>
+
+
+	<label> Is Completed? </label><br/>
+	<%= f.check_box :is_completed %><br/>
+
+	<%= f.hidden_field :milestone_id, value: @milestone.id %>
+
+	<%= f.submit %>
+
+
+
+<%end%>
+
+
+
+
+
+
+
+
+

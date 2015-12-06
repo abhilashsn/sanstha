@@ -1,0 +1,33 @@
+Edit Milestones
+
+<%= form_for [@milestone.project,@milestone] do |f|%> 
+ 
+ <% if @milestone.errors.any? %>
+    <% for msg in @milestone.errors.full_messages %>
+    <%= msg %>
+ <% end %>
+ <% end %>
+
+Title :
+<%= f.text_field :title %>
+
+
+Milestone Status :
+<div><%= label :is_completed, "Ongoing" %>
+      <%= f.radio_button :is_completed, false , :checked => true , :value => false %></div>
+
+
+
+
+<div><%= label :is_completed, "Completed"%>
+       <%= f.radio_button :is_completed, true, :value => true%></div>
+
+
+Due date :
+<%= f.date_field :due_date %>
+
+<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ <i class="icon-ok icon-white"></i> Save changes
+<% end %>
+
+<% end %>

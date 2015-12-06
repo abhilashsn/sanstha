@@ -1,0 +1,38 @@
+<div class= "row">
+  <div class="col-md-2">
+  </div>
+
+<div class="col-md-8">
+<div class="page-header">
+    <h3>Add New Courses</h3>
+</div> 
+
+    <%= form_for @course do |f|%> <% if @course.errors.any? %>
+        <% for msg in @course.errors.full_messages %>
+              <%= msg %>
+        <% end %>
+    <% end %> 
+
+
+<label> Name :</label><br/>
+<%= f.text_field :name, class: "form-control", autofocus: true, placeholder: "Enter name here", required: true %><br/>
+
+<label> Type :</label><br/>
+<%= f.text_field :course_type, class: "form-control", autofocus: true, placeholder: "Enter type here", required: true %><br/>
+
+<label> Duration :</label><br/>
+<%= f.text_field :duration, class: "form-control", autofocus: true, placeholder: "Enter duration here", required: true %><br/>
+
+
+<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ <i class="icon-ok icon-white"></i> Save changes
+<% end %>
+
+<% end %>
+
+</div>
+
+  <div class="col-md-2">
+  </div>
+
+</div>

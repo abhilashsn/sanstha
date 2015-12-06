@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h2>Dashboard</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+    	<div class="page-header">
+    		<h4 style="color:red">Listing Students</h4>
+    	</div>
+        <div>
+        <% Student.all.each do |student|%>
+        <%= student.name%><br/>
+        <%end%>
+    </div>
+    </div>
+
+
+    <div class="col-md-4">
+    	<div class="page-header">
+    		<h4 style="color:red">Listing Batches</h4>
+    	</div>
+        <div>
+        <% Batch.all.each do |batch|%>
+        <%= batch.name%><br/>
+        <%end%>
+    </div>
+
+    </div>
+
+    <div class="col-md-4">
+    	<div class="page-header">
+    		<h4 style="color:red">Listing Courses</h4>
+    	</div>
+         <div>
+        <% Course.all.each do |course|%>
+        <%= course.name%><br/>
+        <%end%>
+        </div>
+    
+    </div>
+
+</div>

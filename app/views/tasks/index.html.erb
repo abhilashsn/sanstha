@@ -1,0 +1,52 @@
+<div class="page-header">
+    <h3>Listing of Tasks</h3>
+</div>
+
+<div class= "row">
+  <div class="col-md-12">
+
+<table class="table"  id="myTable">
+       <thead>
+            <tr>
+                <th>slno</th>
+                <th>Name</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+       </thead>
+
+       <tbody>
+
+             <% @tasks.each_with_index do |task,index| %>
+             <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= task.name %></td>
+                  <td><%= task.due_date %></td>
+                  <td><%= task.is_completed %></td>
+                  <td>
+                     <%= link_to edit_task_path(task.id) do %><span class = "glyphicon glyphicon-pencil "></span><% end %> |
+
+                        <%= link_to task_path(task.id), method: :delete, data: {confirm: "Are you sure?"}  do%> <span class = "glyphicon glyphicon-trash "></span><%end%> |
+                       
+                       <%= link_to task_path(task.id) do %><span class = "glyphicon glyphicon-eye-open "></span><% end %>
+
+                    </td>
+
+                        
+                       
+                       
+             </tr>
+             <% end %>
+
+       </tbody>
+</table>
+
+
+
+</div>
+</div>
+
+<br/>
+

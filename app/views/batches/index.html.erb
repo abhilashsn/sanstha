@@ -1,0 +1,49 @@
+<div class="page-header">
+    <h3> Listing Batches </h3>
+</div>
+
+<div class= "row">
+  <div class="col-md-12">
+        
+        <table class="table" id="myTable">
+	<thead>
+		<tr>
+		<th>sl</th>
+			<th>Name</th>
+			<th>Start date</th>
+			<th>End Date</th>
+			<th>Instruction Type</th>
+			<th>Description</th>
+      <th>Batch Status</th>
+			
+			
+		</tr>
+	</thead>
+	<tbody>
+		 <% @batches.each_with_index do |batch,index| %>
+             <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= link_to batch.name, batch %></td>
+                  <td><%= batch.start_date.try(:strftime,'%A, %d, %B, %Y') %></td>
+                  <td><%= batch.end_date.try(:strftime,'%A, %d, %B, %Y') %></td>
+                  <td><%= batch.instruction_type %></td>
+                  <td><%= batch.description %></td>
+                  <td><%= batch.is_completed %></td>
+                  <td><%= link_to edit_batch_path(batch.id) do %><span class = "glyphicon glyphicon-pencil "></span><% end %></td>
+
+             </tr>
+                  
+  
+             <% end %>
+	</tbody>
+
+
+</table>
+
+</div>
+</div>  	
+
+
+
+<%= button_to "Add batch", new_batch_path, :class => "btn btn-primary", :method => :get  %>
+

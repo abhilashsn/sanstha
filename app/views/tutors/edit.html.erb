@@ -1,0 +1,101 @@
+<div class= "row">
+  <div class="col-md-2">
+  </div>
+
+  <div class="col-md-8">
+
+    <%#= button_to "Add batch", new_batch_path, :class => "btn btn-primary", :method => :get  %>
+
+
+       <h3> Add New Tutor</h3>
+
+<%= form_for (@tutor) do |f| %>
+
+<% if @tutor.errors.any? %>
+        <ul>
+            <% for msg in @tutor.errors.full_messages %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+  <% end %>
+
+
+
+<div class="form-group">
+<%#= f.collection_select(:course_id, courses, :id, :name, prompt: "Select Course")%>
+<%= f.text_field :name, :class => "form-control",:placeholder => :name%><br/>
+</div>
+
+<%#= f.collection_select :batch, :course_id, Course.all, :id, :name, :prompt => 'Please select country' %>
+
+
+
+<div class="form-group">
+
+<%= f.text_field :experience,:class => "form-control",:placeholder => :experience %><br/>
+
+</div>
+
+<div class="form-group">
+
+<%= f.text_field :qualification,:class => "form-control",:placeholder => :qualification %><br/>
+</div>
+
+<div class="form-group" >
+
+<%= f.text_field :address,:class => "form-control",:placeholder => :address %><br/>
+
+</div>
+
+<div class="form-group">
+<label>Gender :<label><br/>
+  <%= f.radio_button(:gender, "male", :checked => (:gender == 'male')? true:false) %>male
+    <%= f.radio_button(:gender, "female", :checked => (:gender == 'female')? true:false) %>female<br/>
+</div>
+
+<div class="form-group" >
+
+<%= f.text_field :mobile,:class => "form-control",:placeholder => :mobile %><br/>
+
+</div>
+
+
+<div class="form-group" >
+
+<%= f.text_field :hourly_rate,:class => "form-control",:placeholder => :hourly_rate %><br/>
+
+</div>
+
+
+<div class="form-group" >
+
+<%= f.text_field :location,:class => "form-control",:placeholder => :tutor %><br/>
+
+</div>
+
+<div class="form-group" >
+
+<%= f.text_field :email,:class => "form-control",:placeholder => :email %><br/>
+
+</div>
+
+
+
+
+
+
+<%= button_tag(type: 'submit', class: "btn btn-danger") do %>
+ <i class="icon-ok icon-white"></i> Save changes
+<% end %>
+<%end%>
+
+  </div>
+
+  <div class="col-md-2">
+  </div>
+</div>
+
+
+
+
+

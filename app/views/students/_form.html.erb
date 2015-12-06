@@ -1,0 +1,102 @@
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for(@student, remote: remote, html: {role: :form, 'data-model' => 'student'}) do |s| %>
+<%#= form_for (@student) do |s|%>
+
+
+	<% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+<div class="form-group">
+	<%= s.label :name, class: 'control-label' %><br>
+	<%= s.text_field :name, class: "form-control", autofocus: true, placeholder: "Enter name here", required: true%><br/>
+	<span class="help-block"></span>
+
+</div>
+
+<div class="form-group">
+	
+	<%= s.label :email, :class => 'control-label' %><br>
+	<%= s.email_field :email, class: "form-control", autofocus: true, placeholder: "Enter email here", required: true%><br/>
+    <span class="help-block"></span>
+
+</div>
+
+<div class="form-group">
+
+	<%= s.label :mobile, :class => 'control-label' %><br>
+	<%= s.text_field :mobile, class: "form-control", autofocus: true, placeholder: "Enter mobile no here", required: true%><br/>
+	<span class="help-block"></span>
+</div>
+
+<div class="form-group">
+
+	<label>About</label><br/>
+	<%= s.text_area :about, class: "form-control", autofocus: true, placeholder: "Enter about here", required: true%><br/>
+	<span class="help-block"></span>
+
+</div>
+
+<div class="form-group">
+
+	<label>Address</label><br/>
+	<%= s.text_area :address, class: "form-control", autofocus: true, placeholder: "Enter adress here", required: true%><br/>
+    <span class="help-block"></span>
+
+</div>
+
+<div class="form-group">
+
+	<label>Gender</label><br/>
+	<%= s.radio_button(:gender, "female", :checked => (:gender == 'female')? true:false) %>Female
+    <%= s.radio_button(:gender, "male", :checked => (:gender == 'male')? true:false) %>Male<br/>
+</div>
+
+<div class="form-group">
+
+	<label>Qualification</label><br/>
+	<%= s.text_field :qualification, class: "form-control", autofocus: true, placeholder: "Enter qualification here", required: true%><br/>
+	<span class="help-block"></span>
+
+</div>
+
+<div class="form-group">
+
+	<label>Preference<label><br/>
+	<%= s.radio_button(:preference, "online", :checked => (:preference == 'online')? true:false) %>online
+    <%= s.radio_button(:preference, "classes", :checked => (:preference == 'classes')? true:false) %>classes<br/>
+</div>
+
+<div class="form-group">
+
+
+	<label>Select Course</label><br/>
+	<%= s.collection_check_boxes :course_ids, Course.all, :id, :name do |b| %>
+	<div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+</div>	
+
+<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ <i class="icon-ok icon-white"></i> Save changes
+<% end %>
+
+
+
+
+	<%end%>

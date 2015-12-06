@@ -1,0 +1,111 @@
+<div class= "row">
+  
+  <div class="col-md-2">
+  </div>
+
+  <div class="col-md-8">
+
+    <%#= button_to "Add batch", new_batch_path, :class => "btn btn-primary", :method => :get  %>
+
+    <div class="page-header">
+        <h3>Add New Milestone</h3>
+    </div>
+
+        <%= form_for (@batch) do |f| %>
+
+<% if @batch.errors.any? %>
+        <ul>
+            <% for msg in @batch.errors.full_messages %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+  <% end %>
+
+
+
+
+<label>Course :</label><br/>
+<%#= f.collection_select(:course_id, courses, :id, :name, prompt: "Select Course")%>
+<%= f.collection_select :course_id, Course.all, :id, :name, prompt: "select course"%><br/>
+
+
+<%#= f.collection_select :batch, :course_id, Course.all, :id, :name, :prompt => 'Please select country' %>
+
+
+
+<div class="form-group">
+
+  <label> Name :</label><br/>
+  <%= f.text_field :name, class: "form-control", autofocus: true, placeholder: "Enter name here", required: true%><br/>
+</div>
+
+<div class="form-group">
+
+   <lable>Start Date :</lable><br/>
+   <%= f.text_field 'start_date',:id => "batch_start_date"%>
+</div>
+
+
+
+<div class="form-group" >
+
+    <lable>End Date :</lable><br/>
+    <%= f.text_field :end_date,:id => "batch_end_date" %>
+</div>
+
+
+
+
+<div class="form-group">
+
+    <label>Description :</label><br/>
+    <%= f.text_area :description, class: "form-control", autofocus: true, placeholder: "Enter description here", required: true %><br/>
+
+</div>
+
+<div class="form-group">
+
+<label>Instruction Type :<label><br/>
+    <%= f.radio_button(:instruction_type, "online", :checked => (:instruction_type == 'online')? true:false) %>online
+    <%= f.radio_button(:instruction_type, "classes", :checked => (:instruction_type == 'classes')? true:false) %>classes<br/>
+</div>
+
+
+<div class="form-group">
+
+  <label>Select Student</label><br/>
+   <%= f.collection_check_boxes :student_ids, Student.all, :id, :name do |b| %>
+    <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+     </div>
+   <% end %>
+</div>
+
+
+<div class="form-group">
+
+     <div class="container" ><%= label :is_completed, "Ongoing" %>
+         <%= f.radio_button :is_completed, false , :checked => true , :value => false %></div>
+
+     <div class="container" ><%= label :is_completed, "Completed"%>
+         <%= f.radio_button :is_completed, true, :value => true%></div><br/>
+</div>
+
+
+<%= button_tag(type: 'submit', class: "btn btn-danger") do %>
+ <i class="icon-ok icon-white"></i> Save changes
+<% end %>
+<%end%>
+
+</div>
+
+  <div class="col-md-2">
+  </div>
+
+</div>
+
+
+
+
+

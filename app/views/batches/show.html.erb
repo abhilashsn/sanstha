@@ -1,0 +1,36 @@
+<div> 
+	<h2><%= @batch.name%></h2>
+</div>
+
+<hr/>
+
+<div>
+<Strong>Start Date :</strong>
+<%= @batch.start_date %>
+</div>
+
+<div>
+<strong>End Date :</strong>
+<%= @batch.end_date %>
+</div>
+
+<div>
+<strong>Instruction Type :</strong>
+<%= @batch.instruction_type %>
+</div>
+
+<div>
+<strong>Description :</strong>
+<%= @batch.description %>
+</div>
+
+<div>
+<strong>Batch Status :</strong>
+<%= @batch.is_completed %>
+</div><br/>
+
+
+
+<%= button_to "Edit", edit_batch_path(@batch), :class => "btn btn-primary", :method => :get %> 
+<%= button_to "Delete", batch_path(@batch), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %> 
+

@@ -1,0 +1,47 @@
+<div class= "row">
+  <div class="col-md-2">
+  </div>
+
+<div class="col-md-8">
+ 
+<div class="page-header">
+    <h3>Edit Project</h3>
+</div>
+
+
+<%= form_for @project do |f| %>
+
+<% if @project.errors.any? %>
+	<ul>
+        <% for msg in @project.errors.full_messages %>
+        <li><%= msg %></li>
+        <% end %>
+	</ul>
+<% end %>
+
+<label>Name :</label><br/>
+<%= f.text_field :name %><br/>
+
+<label>Description :</label><br/>
+<%= f.text_area :description %><br/>
+
+<label>Status :</label><br/>
+<%= f.text_field :status %><br/>
+
+<label>Start_date :</label><br/>
+<%= f.date_field :start_date %><br/>
+
+<br/>
+
+<%= button_tag(type: 'submit', class: "btn btn-danger") do %>
+ <i class="icon-ok icon-white"></i> update project
+<% end %>
+
+<% end %>
+</div>
+
+ <div class="col-md-2">
+  </div>
+
+</div>
+

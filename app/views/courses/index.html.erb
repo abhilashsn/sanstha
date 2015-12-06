@@ -1,0 +1,44 @@
+<div class="page-header">
+    <h3>Listing of Courses</h3>
+</div>
+
+
+<div class= "row">
+  <div class="col-md-12">
+
+<table class="table"  id="myTable">
+       <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Duration</th>
+                <th>Actions</th>
+
+            </tr>
+       </thead>
+
+       <tbody>
+
+             <% @courses.each_with_index do |course,index| %>
+             <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= link_to course.name,course %></td>
+                  <td><%= course.course_type %></td>
+                  <td><%= course.duration %></td>
+                  <td><%= link_to edit_course_path(course.id)  do %><span class = "glyphicon glyphicon-pencil "></span><% end %> </td>
+
+ 
+
+             </tr>
+             <% end %>
+
+       </tbody>
+</table>
+
+</div>
+</div>
+
+<br/>
+
+<%= button_to "Add course", new_course_path, :class => "btn btn-primary", :method => :get %>

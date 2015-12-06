@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126095301) do
+ActiveRecord::Schema.define(version: 20151203133749) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "student_id"
+    t.integer  "project_id"
+  end
 
   create_table "batches", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +28,9 @@ ActiveRecord::Schema.define(version: 20151126095301) do
     t.string   "description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "couse_id"
+    t.integer  "course_id"
+    t.boolean  "is_completed"
   end
 
   create_table "coursebatches", force: :cascade do |t|
@@ -32,8 +42,39 @@ ActiveRecord::Schema.define(version: 20151126095301) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
     t.string   "duration"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "course_type"
+  end
+
+  create_table "milestones", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "title"
+    t.boolean  "is_completed"
+    t.date     "due_date"
+    t.integer  "project_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "status"
+    t.string   "start_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +91,7 @@ ActiveRecord::Schema.define(version: 20151126095301) do
     t.integer  "student_id"
     t.integer  "course_id"
     t.integer  "tutor_id"
+    t.integer  "batch_id"
   end
 
   create_table "studentcourses", force: :cascade do |t|
@@ -79,6 +121,16 @@ ActiveRecord::Schema.define(version: 20151126095301) do
     t.integer  "source_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name"
+    t.date     "due_date"
+    t.boolean  "is_completed", default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "milestone_id"
+    t.integer  "project_id"
+  end
+
   create_table "tutorbatches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,5 +151,23 @@ ActiveRecord::Schema.define(version: 20151126095301) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

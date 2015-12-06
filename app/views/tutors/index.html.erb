@@ -1,0 +1,53 @@
+<div class="page-header">
+    <h3> Listing Tutors </h3>
+</div>
+
+<div class= "row">
+  <div class="col-md-12">
+        
+        <table class="table" id="myTable">
+	<thead>
+		<tr>
+		<th>sl</th>
+			<th>Name</th>
+			<th>Experience</th>
+			<th>Qualification</th>
+			<th>Address</th>
+			<th>Gender</th>
+      		<th>Mobile</th>
+      		<th>Hourly_Rate</th>
+      		<th>Location</th>
+      		<th>Email</th>
+
+
+			
+			
+		</tr>
+	</thead>
+	<tbody>
+		 <% @tutors.each_with_index do |tutor,index| %>
+             <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= link_to tutor.name, tutor %></td>
+                  <td><%= tutor.experience %></td>
+                  <td><%= tutor.qualification %></td>
+                  <td><%= tutor.address %></td>
+                  <td><%= tutor.gender %></td>
+                  <td><%= tutor.mobile %></td>
+                  <td><%= tutor.hourly_rate %></td>
+                  <td><%= tutor.location %></td>
+                  <td><%= tutor.email %></td>
+			 </tr>
+             <% end %>
+	</tbody>
+
+
+</table>
+
+</div>
+</div>  	
+
+
+
+<%= button_to "Add tutor", new_tutor_path, :class => "btn btn-primary", :method => :get  %>
+

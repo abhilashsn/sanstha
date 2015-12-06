@@ -1,0 +1,61 @@
+<h3>Edit batches</h3>
+
+<%= form_for @batch do |f|%>
+
+	<% if @batch.errors.any? %>
+        <ul>
+            <% for msg in @batch.errors.full_messages %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+	<% end %>
+<div class="form-group">
+
+<label> Name :</label>
+<%= f.text_field :name %><br/>
+
+</div>
+
+<div class="form-group">
+
+<lable>Start Date :</lable>
+<%= f.text_field :start_date %><br/>
+
+</div>
+
+<div class="form-group">
+
+<lable>End Date :</lable>
+<%= f.text_field :end_date %><br/>
+
+</div>
+<div class="form-group">
+
+<label>Instruction Type :<label><br/>
+  <%= f.radio_button(:instruction_type, "online", :checked => (:instruction_type == 'online')? true:false) %>online
+  <%= f.radio_button(:instruction_type, "classes", :checked => (:instruction_type == 'classes')? true:false) %>classes<br/>
+
+</div>
+
+<div class="form-group">
+
+<label>Description :</label>
+<%= f.text_field :description %><br/>
+
+</div>
+
+<div class="form-group">
+
+<%= label :is_completed, "Ongoing" %>
+      <%= f.radio_button :is_completed, false , :checked => true , :value => false %>
+
+
+<%= label :is_completed, "Completed"%>
+       <%= f.radio_button :is_completed, true, :value => true%>
+
+   </div>
+
+<br/>
+
+<%= f.submit %>
+<%end%>

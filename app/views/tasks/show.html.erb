@@ -1,0 +1,30 @@
+
+
+
+<div>
+<Strong>Name :</strong>
+<%= @task.name %>
+</div><br/>
+
+<div>
+<strong>Due Date :</strong>
+<%= @task.due_date %>
+</div><br/>
+
+<div>
+<strong>Status :</strong>
+<%= @task.is_completed %>
+</div><br/>
+
+
+<div>
+<%= button_to "Edit", edit_task_path(@task.project_id, @task), :class => "btn btn-primary", :method => :get %> 
+
+</div>
+
+
+<%#= @task.mile %>
+
+
+
+

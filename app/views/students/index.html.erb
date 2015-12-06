@@ -1,0 +1,97 @@
+<div class="page-header">
+    <h3>Listing students</h3>
+</div>
+
+<div class= "row">
+  <div class="col-md-12">
+
+       <table class="table table-bordered" id="myTable">
+       <thead>
+        <tr>
+            <th>SL NO</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th colspan="3">Batches </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @students.each_with_index do |student, index|%>
+        <tr>
+            <%# Render table row partial for each person object %>
+              <td><%= index+1 %></td>
+              <td><%= link_to student.name, student%></td>
+              <td><%= student.email%></td>
+              <td><%= student.mobile%></td>
+              <td><%= student.address %></td>
+                  <% student.batches.each do |batch| %>
+              <td><%= batch.name %></td>
+              <%end%>
+
+        <%#= render :partial => 'table_row', locals: {student: student} %>
+
+        </tr>
+    <% end %>
+    </tbody>
+    
+</table>
+   
+
+</div>
+   
+
+</div>
+
+
+
+
+
+
+
+
+
+    
+
+
+<%# Added Bootstrap data modal attribute %>
+<%#= link_to 'New Student', '#new_student_modal', 'data-toggle' => 'modal',:class => "btn btn-primary",:remote => true %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new_student_modal">
+  new student
+</button>
+
+
+ <%# Bootstrap modal markup. @see: http://getbootstrap.com/javascript/#modals %>
+<!-- Modal -->
+<div class="modal fade" id="new_student_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:red">New Student</h4>
+      </div>
+      <div class="modal-body">
+        <%= render :partial => "form"%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

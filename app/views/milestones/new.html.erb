@@ -1,0 +1,46 @@
+<div class= "row">
+  <div class="col-md-2">
+  </div>
+
+<div class="col-md-8">
+<div class="page-header">
+    <h3>Add New Milestone</h3>
+</div>
+
+       <%= form_for [@project,@milestone] do |f|%> 
+ 
+        <% if @milestone.errors.any? %>
+        <% for msg in @milestone.errors.full_messages %>
+        <%= msg %>
+        <% end %>
+       <% end %>
+
+<label>Title :</label><br/>
+      <%= f.text_field :title, class: "form-control", autofocus: true, placeholder: "Enter title here", required: true  %><br/>
+
+
+<label>Milestone status :</label><br/>
+      <div class="container" ><%= label :is_completed, "Ongoing" %>
+      <%= f.radio_button :is_completed, false , :checked => true , :value => false %></div>
+
+
+      <div class="container"><%= label :is_completed, "Completed"%>
+      <%= f.radio_button :is_completed, true, :value => true%></div><br/>
+
+
+<label>Due Date :</label><br/>
+      <%= f.date_field :due_date, class: "form-control", autofocus: true, placeholder: "Enter date here", required: true  %><br/>
+
+
+<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+   <i class="icon-ok icon-white"></i> Save changes
+   <% end %>
+
+<% end %>
+
+</div>
+
+  <div class="col-md-2">
+  </div>
+</div>
+

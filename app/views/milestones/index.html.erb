@@ -1,0 +1,55 @@
+
+<div class="page-header">
+    <h3>Listing of Milestones</h3>
+</div>
+
+
+<div class= "row">
+  <div class="col-md-12">
+
+<table class="table"  id="myTable">
+       <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Milestone Status</th>
+                <th>Due_date</th>
+            </tr>
+       </thead>
+
+       <tbody>
+
+             <% @milestones.each_with_index do |milestone,index| %>
+             <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%=  milestone.title %></td>
+                  <td><%= milestone.is_completed %></td>
+                  <td><%= milestone.due_date %></td>
+                  <td><%= link_to edit_project_milestone_path(milestone.project_id, milestone)  do %><span class = "glyphicon glyphicon-pencil "></span><% end %> |
+
+                  <%= link_to project_milestone_path(milestone.project_id, milestone), method: :delete, data: {confirm: "Are you sure?"}  do %> <span class = "glyphicon glyphicon-trash "></span><%end%> |
+
+
+                    <%= link_to project_milestone_path(milestone.project_id, milestone)do %><span class = "glyphicon glyphicon-eye-open "></span><% end %> |
+
+                       
+                  <%= link_to "tasks", task_path(milestone.id)%></td>
+
+
+                       
+                       
+
+
+             </tr>
+             <% end %>
+
+       </tbody>
+</table>
+
+</div>
+</div>
+
+
+<br/>
+
+<%= button_to "Add milestone", new_project_milestone_path, :class => "btn btn-primary", :method => :get %>

@@ -1,0 +1,23 @@
+<h3> Add Tasks </h3>
+
+
+<%= form_for([@task]) do |f| %>
+
+
+	<label> Name</label><br/>
+	<%= f.text_field :name%><br/>
+
+
+	<label> Due Date </label><br/>
+	<%= f.date_select :due_date%><br/>
+
+
+	<label> Is Completed? </label><br/>
+	<%= f.check_box :is_completed %><br/>
+
+
+	<%= f.submit %>
+
+
+
+<%end%>

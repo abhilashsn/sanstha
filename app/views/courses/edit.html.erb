@@ -1,0 +1,14 @@
+Edit Courses
+
+<%= form_for @course do |f|%> <% if @course.errors.any? %>
+<% for msg in @course.errors.full_messages %>
+<%= msg %>
+<% end %>
+<% end %> Name :
+<%= f.text_field :name %>
+Type :
+<%= f.text_field :course_type %>
+Duration :
+<%= f.text_field :duration %>
+
+<%= f.submit %> <% end %>
