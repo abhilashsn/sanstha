@@ -8,7 +8,7 @@
     <%#= button_to "Add batch", new_batch_path, :class => "btn btn-primary", :method => :get  %>
 
     <div class="page-header">
-        <h3>Add New Milestone</h3>
+        <h3>Assign Batch</h3>
     </div>
 
         <%= form_for (@batch) do |f| %>
@@ -42,7 +42,7 @@
 <div class="form-group">
 
    <lable>Start Date :</lable><br/>
-   <%= f.text_field 'start_date',:id => "batch_start_date"%>
+   <%= f.text_field :start_date,:id => "batch_start_date"%>
 </div>
 
 

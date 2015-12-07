@@ -1,20 +1,24 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @task.name %></h3>
+  </div>
+  <div class="panel-body">
+    <div>
+		<strong>Due Date :</strong>
+		<%= @task.due_date %>
+		</div><br/>
+
+		<div>
+		<strong>Status :</strong>
+		<%= @task.is_completed %>
+		</div><br/>
+  </div>
+</div>
 
 
 
-<div>
-<Strong>Name :</strong>
-<%= @task.name %>
-</div><br/>
 
-<div>
-<strong>Due Date :</strong>
-<%= @task.due_date %>
-</div><br/>
 
-<div>
-<strong>Status :</strong>
-<%= @task.is_completed %>
-</div><br/>
 
 
 <div>

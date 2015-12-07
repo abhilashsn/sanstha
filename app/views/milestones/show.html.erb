@@ -1,14 +1,11 @@
-<div> 
-	<h2><%= @milestone.title%></h2>
-</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @milestone.title%></h3>
+  </div>
+  <div class="panel-body">
+   
 
-<hr/>
 
-
-<div>
-<Strong>Title :</strong>
-<%= @milestone.title %>
-</div><br/>
 
 <div>
 <strong>Milestone Status :</strong>
@@ -19,7 +16,8 @@
 <strong>Due Date :</strong>
 <%= @milestone.due_date %>
 </div><br/>
-
+</div>
+</div>
 
 <div>
 <%= button_to "Edit", edit_project_milestone_path(@milestone.project_id, @milestone), :class => "btn btn-primary", :method => :get %> 

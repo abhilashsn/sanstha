@@ -1,13 +1,17 @@
 <div class="page-header">
     <h3>Listing of Projects</h3>
 </div>
+
+
+<p>
    <%= button_to "Add project", new_project_path, :class => "btn btn-primary", :method => :get %>
+ </p>
 
 <div class= "row">
-  <div class="col-md-12">
+  <div class="col-md-7">
+    <div class="table-responsive" style=" max-height: 300px; width: 100%; margin: 0; overflow-y: auto; ">
 
-<table class="table"  id="myTable">
-       <thead>
+<table class="table table-bordered table-hover table-condensed table-scrollable " style="height:50px; " id="myTable">       <thead>
             <tr>
                 <th>slno</th>
                 <th>Name</th>
@@ -49,7 +53,8 @@
        </tbody>
 </table>
 
-
+</div>
+</div>
 
 </div>
 </div>

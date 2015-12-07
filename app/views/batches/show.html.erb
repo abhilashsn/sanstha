@@ -1,36 +1,93 @@
-<div> 
-	<h2><%= @batch.name%></h2>
-</div>
+<style type="text/css">
+	.label a{
+		color:white;
+	}
+</style>
+<div class="header">
+<h3><%= @batch.name.capitalize%></h3>
 
-<hr/>
+	<h4>	<span class="label label-info text-muted">
+			<%=@batch.start_date%>
+		</span>
+		<label> </label>
+		<span class="label label-primary">
+ 		<%= @batch.end_date %>
+		</span>
+		<label> </label>
+		<span class="label label-primary">
+  		<%= @batch.instruction_type %>
+		</span>
+		<label> </label>
+		<span class="label label-primary">
+		<%= @batch.is_completed %>
+		</span></h4>
+		<span class="label label-primary">
+		<%= @batch.description %>
+		</span></h4>
+		<span class="label label-primary">
+    		<% @batch.students.each do |batch|%>
+   			 <%= batch.name %>
+			<%end%>
+		</span></h4>
 
-<div>
-<Strong>Start Date :</strong>
-<%= @batch.start_date %>
-</div>
+		<div class ="pull-right">
 
-<div>
-<strong>End Date :</strong>
-<%= @batch.end_date %>
-</div>
-
-<div>
-<strong>Instruction Type :</strong>
-<%= @batch.instruction_type %>
-</div>
-
-<div>
-<strong>Description :</strong>
-<%= @batch.description %>
-</div>
-
-<div>
-<strong>Batch Status :</strong>
-<%= @batch.is_completed %>
+			<%= link_to "EDIT THIS BATCH", edit_batch_path , class: "btn btn-primary btn-xs"%>
+		
+					<%= link_to "DELETE THIS", batch_path(@batch), method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-danger btn-xs "%>
+		
+		<%=link_to "BACK ",  batches_path , class: "btn btn-primary btn-xs"%>
 </div><br/>
 
+<div class= "row">
+	<div class="col-md-8">
 
 
-<%= button_to "Edit", edit_batch_path(@batch), :class => "btn btn-primary", :method => :get %> 
-<%= button_to "Delete", batch_path(@batch), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %> 
+	</div>
+	<div class="col-md-4">
+
+
+	</div><br/>
+</div>
+
+
+
+<div class="panel panel-primary">
+<div class="panel-heading"><h3>Student Listing</h3></div>
+<div class="panel-body">
+
+<div class="table-responsive" style=" width: 100%; margin: 0; overflow-y: auto; ">
+<table class="table table-bordered table-hover table-condensed " style="height:50px; ">
+	<thead>
+		<tr>
+			<th>Sl No</th>
+			<th>Batch Id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th>About</th>
+			<th>Address</th>
+
+
+		</tr>
+	</thead>
+	<body>
+		<% @batch.students.each_with_index do |batch,index| %>
+		<tr>
+			<th><%=index+1%></th>
+			<th><%=batch.id%></th>
+			<th><%=batch.name%></th>
+			<th><%=batch.email%></th>
+			<th><%=batch.mobile%></th>
+			<th><%=batch.about%></th>
+			<th><%=batch.address%></th>			
+
+		</tr>
+		<%end %>
+	</body>
+</table>
+</div>
+</div>
+</div>
+
 

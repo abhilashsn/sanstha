@@ -1,43 +1,138 @@
+<style type="text/css">
+	.label a{
+		color:white;
+	}
+</style>
+<div class="header">
+<h3><%= @student.name.capitalize%></h3>
+
+	<h4>	<span class="label label-info text-muted">
+			<%=mail_to @student.email%>
+		</span>
+		<label> </label>
+		<span class="label label-primary">
+			<%=link_to @student.mobile, "tel:#{@student.mobile}" %>
+		</span>
+		<label> </label>
+		<span class="label label-primary">
+			<%= @student.address %>
+		</span>
+		<label> </label>
+		<span class="label label-primary">
+			<%= @student.gender %>
+		</span></h4>
+		<span class="label label-primary">
+			<%= @student.qualification %>
+		</span></h4>
+		<span class="label label-primary">
+			<%= @student.preference %>
+		</span></h4>
+		<span class="label label-primary">
+    		<% @student.courses.each do |course|%>
+   			 <%= course.name %>
+			<%end%>
+		</span></h4>
+
+		<div class ="pull-right">
+
+			<%= link_to "EDIT THIS STUDENT", edit_student_path , class: "btn btn-primary btn-xs"%>
+		
+					<%= link_to "DELETE THIS", student_path(@student), method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-danger btn-xs "%>
+		
+		<%=link_to "BACK ",  students_path , class: "btn btn-primary btn-xs"%>
+</div><br/>
+
+<div class= "row">
+	<div class="col-md-8">
 
 
+	</div>
+	<div class="col-md-4">
 
 
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= @student.name %></h3>
-  </div>
-  
-  <div class="panel-body">  
-
-
-					<label>Email:</label>
-					<%= @student.email %><br/>
-
-					<label>mobile</label>
-					<%= @student.mobile%><br/>
-
-					<label>About</label>
-					<%= @student.about%><br/>
-
-					<label>Address</label>
-					<%= @student.address%><br/>
-
-					<label>Gender</label>
-					<%= @student.gender%><br/>
-
-					<label>Qualification</label>
-					<%= @student.qualification%><br/>
-
-					<label>Preference</label>
-					<%= @student.preference%><br/>
-
-					<label>COURSES</label>
-					     <% @student.courses.each do |course|%>
-					     <%= course.name %>
-					<%end%><br/>
-   </div>
+	</div><br/>
 </div>
 
-<%#= button_to "Add course", new_course_path, :class => "btn btn-primary", :method => :get %>
-<%= button_to "Edit", edit_student_path(@student), :class => "btn btn-primary", :method => :get %> 
-<%= button_to "Delete", student_path(@student), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %>
+
+
+<div class="panel panel-primary">
+<div class="panel-heading"><h3>Course Listing</h3></div>
+<div class="panel-body">
+
+<div class="table-responsive" style=" width: 100%; margin: 0; overflow-y: auto; ">
+<table class="table table-bordered table-hover table-condensed " style="height:50px; ">
+	<thead>
+		<tr>
+			<th>Sl No</th>
+			<th>Course Id</th>
+			<th>Name</th>
+			<th>Duration</th>
+			<th>Course Type</th>
+		</tr>
+	</thead>
+	<body>
+		<% @student.courses.each_with_index do |student,index| %>
+		<tr>
+			<th><%=index+1%></th>
+			<th><%=student.id%></th>
+			<th><%=student.name%></th>
+			<th><%=student.duration%></th>
+			<th><%=student.course_type%></th>
+			
+
+		</tr>
+		<%end %>
+	</body>
+</table>
+</div>
+</div>
+</div>
+
+
+<div class="panel panel-danger">
+<div class="panel-heading"><h3>Batches Listing</h3></div>
+<div class="panel-body">		
+
+
+<div class="table-responsive" style=" width: 100%; margin: 0; overflow-y: auto; ">
+<table class="table table-bordered table-hover table-condensed " style="height:50px; ">
+	<thead>
+		<tr>
+			<th>Sl No</th>
+			<th>Name</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Instruction Type</th>
+			<th>Description</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<body>
+		<% @student.batches.each_with_index  do |batch,index| %>
+		<tr>
+			<th><%= index+1 %></th>
+			<th><%=batch.name%></th>
+			<th><%=batch.start_date%></th>
+			<th><%=batch.end_date%></th>
+			<th><%=batch.instruction_type%></th>
+			<th><%=batch.description%></th>
+			<th><%=batch.is_completed%></th>
+		</tr>
+		<%end%>
+	</body>
+</table>
+</div>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+		
+
