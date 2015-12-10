@@ -10,10 +10,104 @@
 Description: <%= @project.description %>
 Status: <%= @project.status %>
 Start_date: <%= @project.start_date %>
+
+<%= @project.students.pluck(:name).join(", ") %>
 </div>
 </div>
 
+<hr/>
+
+<h3>Milestones</h3>
+
+<% @milestone.each do |milestone|%>
+
+
+<div class="panel panel-warning">
+<div class="panel-heading">
+	<h4><%=milestone.title %></h4>
+	<%= link_to "add task", project_milestone_path(milestone.project_id, milestone)%>
+</div>
+<div class="panel-body">
+
+	<div class="col-md-4">
+         <h5 style="color:blue">Completed Tasks</h5>
+
+       <div>
+          <% milestone.tasks.each do |task|%>
+
+          <%if task.is_completed == true   %>
+
+          	<%= task.name %>
+          	<%= link_to "mark as incomplete", tasks_mark_as_incomplete_path(task_id: task.id)%><br/>
+      <%end%>
+
+		<%end%>
+        </div>
+
+	</div>
 
 
 
+
+	<div class="col-md-4">
+		<h5 style="color:blue">Overdue tasks</h5>
+
+
+        <div>
+          <% milestone.tasks.each do |task|%>
+
+          <%if task.is_completed == false && task.due_date < Date.today %>
+             <%=task.name%>	<br/>
+
+     	 <%else%> 
+      <%end%>
+
+		<%end%>
+        </div>
+
+
+	</div>
+
+
+
+	<div class="col-md-4">
+		<h5 style="color:blue">Incomplete task</h5>
+
+		 <div>
+          <% milestone.tasks.each do |task|%>
+
+
+          <%if task.is_completed == false && task.due_date > Date.today %>
+
+          <%= task.name%>
+          <%= link_to "mark as Complete",tasks_mark_as_complete_path(task_id: task.id)%><br/>
+      <%end%>
+
+		<%end%>
+        </div>
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+<%end%>
+
+
+</div>
+</div>
+</div>
 

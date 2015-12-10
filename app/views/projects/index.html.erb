@@ -1,33 +1,36 @@
-<div class="page-header">
-    <h3>Listing of Projects</h3>
-</div>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"  >
+  <div class="panel panel-default" >
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#client" aria-expanded="false" aria-controls="collapseOne" style="color:#D3212D">
+          <h3>Listing projects (<%= @projects_count%>)</h3> 
+        </a>
+      </h4>
+    </div>
+    <div id="client" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+       
+    
 
-
-<p>
-   <%= button_to "Add project", new_project_path, :class => "btn btn-primary", :method => :get %>
- </p>
-
-<div class= "row">
-  <div class="col-md-7">
-    <div class="table-responsive" style=" max-height: 300px; width: 100%; margin: 0; overflow-y: auto; ">
-
-<table class="table table-bordered table-hover table-condensed table-scrollable " style="height:50px; " id="myTable">       <thead>
-            <tr>
-                <th>slno</th>
+<div class="table-responsive" style="  width: 100%; margin: 0; overflow-y: auto; ">
+<table class="table table-bordered table-hover table-condensed " style="height:50px; " id="myTable">
+  <thead>
+    <tr>
+      <th>slno</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Status</th>
                 <th>Start_date</th>
                 <th>Actions</th>
 
-            </tr>
-       </thead>
+    </tr>
+  </thead>
 
-       <tbody>
-
+  
+  <body>
              <% @projects.each_with_index do |project,index| %>
-             <tr>
-                  <td><%= index + 1 %></td>
+    <tr>
+         <td><%= index + 1 %></td>
                   <td><%= project.name %></td>
                   <td><%= project.description %></td>
                   <td><%= project.status %></td>
@@ -39,25 +42,83 @@
                        <%= link_to project_path(project.id) do %><span class = "glyphicon glyphicon-eye-open "></span><% end %> | 
                         <%= link_to "milestones", project_milestones_path(project.id), :method => :get, style: "color: red" 
                         %></td>
+    </tr>
+    <%end %>
+  </body>
+</table><br> <br>
+</div>
+
+<%= button_to "Add Project", new_project_path, :class => "btn btn-primary", :method => :get %>
+  </div>
+ </div>
+</div>
 
 
-                        
+
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#project" aria-expanded="false" aria-controls="collapseTwo" style="color:#D3212D">
+          <h3>Project Milestones (<%= @milestones_count %>)</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="project" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+      
 
 
+<div class="table-responsive" style=" width: 100%; margin: 0; overflow-y: auto; ">
+<table class="table table-bordered table-hover table-condensed " style="height:50px; "  id="myTable2">
+  <thead>
+    <tr>
+    <tr>
+                <th></th>
+                <th>slno</th>
+                <th>Title</th>
+                <th>Milestone Status</th>
+                <th>Due_date</th>
+            </tr>
+    </tr>
+  </thead>
+  <body>
+            <%@milestones.each_with_index do |milestone,index| %>
+    <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= milestone.title %></td>
+                  <td><%= milestone.is_completed %></td>
+                  <td><%= milestone.due_date %></td>
+                  <td><%= link_to edit_project_milestone_path(milestone.project_id, milestone)  do %><span class = "glyphicon glyphicon-pencil "></span><% end %> |
+
+                  <%= link_to project_milestone_path(milestone.project_id, milestone), method: :delete, data: {confirm: "Are you sure?"}  do %> <span class = "glyphicon glyphicon-trash "></span><%end%> |
 
 
+                    <%= link_to project_milestone_path(milestone.project_id, milestone)do %><span class = "glyphicon glyphicon-eye-open "></span><% end %> |
 
-             </tr>
-             <% end %>
+                       
+                  <%= link_to "tasks", task_path(milestone.id)%></td>
 
-       </tbody>
+
+                       
+                       
+
+
+    </tr>
+    <%end %>
+  </body>
 </table>
-
-</div>
 </div>
 
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 
-<br/>
+
+
+
+
+
+
+
+
 

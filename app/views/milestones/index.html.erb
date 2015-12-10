@@ -30,10 +30,9 @@
                   <%= link_to project_milestone_path(milestone.project_id, milestone), method: :delete, data: {confirm: "Are you sure?"}  do %> <span class = "glyphicon glyphicon-trash "></span><%end%> |
 
 
-                    <%= link_to project_milestone_path(milestone.project_id, milestone)do %><span class = "glyphicon glyphicon-eye-open "></span><% end %> |
+                    <%= link_to project_milestone_path(milestone.project_id, milestone)do %><span class = "glyphicon glyphicon-eye-open "></span><% end %> 
 
                        
-                  <%= link_to "tasks", task_path(milestone.id)%></td>
 
 
                        

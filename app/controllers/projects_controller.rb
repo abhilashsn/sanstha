@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
 
 	def index 
 		@projects =  Project.all 
+		@milestones = Milestone.all
+		@tasks = Task.all
+		@projects_count=Project.count
+		@milestones_count = Milestone.count
+		@tasks_count = Task.count
 	end
 
 	def new
@@ -42,11 +47,13 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
+		@milestone = @project.milestones
+
 	end
 
 	private
 
 	def project_params
-		params[:project].permit(:name, :description, :status, :start_date)
+		params[:project].permit(:name, :description, :status, :start_date, student_ids: [])
 	end
 end

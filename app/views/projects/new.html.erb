@@ -33,6 +33,19 @@
 
 <br/>
 
+
+<div class="form-group">
+
+
+	<label>Select Students</label><br/>
+	<%= f.collection_check_boxes :student_ids, Student.all, :id, :name do |b| %>
+	<div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+</div>	
+
 <%= button_tag(type: 'submit', class: "btn btn-warning") do %>
  <i class="icon-ok icon-white"></i> create project
 <% end %>

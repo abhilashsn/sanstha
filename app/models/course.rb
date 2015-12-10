@@ -4,4 +4,6 @@ class Course < ActiveRecord::Base
 	has_many :students, :through => :studentcourses
 
 	has_many :batches
+
+	
 end
