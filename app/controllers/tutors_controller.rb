@@ -1,9 +1,11 @@
 class TutorsController < ApplicationController
 	before_filter :authenticate_user!
+	load_and_authorize_resource
+
 
 
 	def index 
-		@tutors =  Tutor.all 
+		@tutors =  current_user.tutors
 	end
 
 	def new

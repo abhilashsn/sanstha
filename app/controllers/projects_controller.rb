@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 	before_filter :authenticate_user!
+	load_and_authorize_resource
 
 
 	def index 
@@ -19,6 +20,7 @@ class ProjectsController < ApplicationController
 		@project = Project.new(project_params)
 
 		if @project.save
+			Notification.project_assigned(@project).deliver!
 			redirect_to projects_path, notice: "Successfully added new project."
 		else
 			render action: "new"

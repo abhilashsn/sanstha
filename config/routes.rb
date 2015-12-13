@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :batches
   resources :projects
   resources :tutors
+  resources :syllabuses
   get 'tasks/mark_as_complete'
   get 'tasks/mark_as_incomplete'
 

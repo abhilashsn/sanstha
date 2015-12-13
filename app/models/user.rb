@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
 
    has_many :permissions
    has_many :roles, through: :permissions
+
+   has_many :tutors
+
+   def role?(role)
+		self.roles.pluck(:name).include?(role)
+	end
 end

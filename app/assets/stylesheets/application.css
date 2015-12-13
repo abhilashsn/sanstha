@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+
+.form-group.required .control-label:before{
+   color: red;
+   content: "*";
+   position: absolute;
+   margin-left: -15px;
+}

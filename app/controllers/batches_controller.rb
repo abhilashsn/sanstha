@@ -1,5 +1,7 @@
 class BatchesController < ApplicationController
 		before_action :authenticate_user!
+		load_and_authorize_resource
+
 
 	def index
 		@batches = Batch.all

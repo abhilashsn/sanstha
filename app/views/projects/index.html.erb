@@ -31,7 +31,7 @@
              <% @projects.each_with_index do |project,index| %>
     <tr>
          <td><%= index + 1 %></td>
-                  <td><%= project.name %></td>
+                  <td><%= link_to project.name, project %></td>
                   <td><%= project.description %></td>
                   <td><%= project.status %></td>
                   <td><%= project.start_date %></td>

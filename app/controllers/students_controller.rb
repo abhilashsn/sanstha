@@ -1,8 +1,9 @@
 class StudentsController < ApplicationController
 		before_action :authenticate_user!
+		load_and_authorize_resource
 
 	def index
-	  @students = Student.all
+	  @students = Student.active
 	  @student = Student.new
 	end
 	def new

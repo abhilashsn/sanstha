@@ -1,0 +1,57 @@
+
+<%= form_for @syllabus do |s| %>
+<%#= form_for (@student) do |s|%>
+
+
+	<% if @syllabus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@syllabus.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @syllabus.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+<div class="form-group required">
+	<%= s.label :topics, class: 'control-label' %><br>
+	<%= s.text_field :topics, class: "form-control", autofocus: true, placeholder: "Enter topic here", required: true%><br/>
+	<span class="help-block"></span>
+
+</div>
+
+<div class="form-group ">
+	
+	<%= s.label :description, :class => 'control-label' %><br>
+	<%= s.text_area :description, class: "form-control", autofocus: true, placeholder: "Enter description here", required: true%><br/>
+    <span class="help-block"></span>
+
+</div>
+
+
+<div class="form-group">
+
+
+	<label>Select Course</label><br/>
+	<%= s.collection_check_boxes :course_id, Course.all, :id, :name do |b| %>
+	<div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+</div>	
+
+<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ <i class="icon-ok icon-white"></i> Save changes
+<% end %>
+
+
+
+
+	<%end%>

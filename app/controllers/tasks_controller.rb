@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 		before_filter :authenticate_user!
+		load_and_authorize_resource
+
 		#before_filter :set_project_id, :only => [:index, :create]
 
 	def index

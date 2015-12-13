@@ -1,0 +1,74 @@
+
+
+
+
+
+
+<div class="page-header">
+    <h3>Listing syllabus</h3>
+</div>
+
+<div class= "row">
+  <div class="col-md-12">
+
+       <table class="table table-bordered" id="myTable">
+       <thead>
+        <tr>
+            <th>SL NO</th>
+            <th>Topics</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @syllabus.each_with_index do |syllabus, index|%>
+        <tr>
+            <%# Render table row partial for each person object %>
+              <td><%= index+1 %></td>
+              <td><%= syllabus.topics %></td>
+              <td><%= syllabus.description%></td>
+             
+
+        <%#= render :partial => 'table_row', locals: {student: student} %>
+
+        </tr>
+    <% end %>
+    </tbody>
+    
+</table>
+
+<%= button_to "Add Syllabus", new_syllabus_path, :class => "btn btn-primary", :method => :get %>
+
+
+</div>
+   
+
+</div>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
