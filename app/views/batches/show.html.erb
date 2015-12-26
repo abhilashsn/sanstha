@@ -24,11 +24,7 @@
 		<span class="label label-primary">
 		<%= @batch.description %>
 		</span></h4>
-		<span class="label label-primary">
-    		<% @batch.students.each do |batch|%>
-   			 <%= batch.name %>
-			<%end%>
-		</span></h4>
+	</h4>
 
 		<div class ="pull-right">
 
@@ -61,7 +57,6 @@
 	<thead>
 		<tr>
 			<th>Sl No</th>
-			<th>Batch Id</th>
 			<th>Name</th>
 			<th>Email</th>
 			<th>Mobile</th>
@@ -75,7 +70,6 @@
 		<% @batch.students.each_with_index do |batch,index| %>
 		<tr>
 			<th><%=index+1%></th>
-			<th><%=batch.id%></th>
 			<th><%=batch.name%></th>
 			<th><%=batch.email%></th>
 			<th><%=batch.mobile%></th>

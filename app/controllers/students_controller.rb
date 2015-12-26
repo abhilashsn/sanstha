@@ -3,13 +3,11 @@ class StudentsController < ApplicationController
 		load_and_authorize_resource
 
 	def index
-	  @students = Student.active
+	  @students = Student.order(created_at: :desc) 
 	  @student = Student.new
 	end
 	def new
-	  @courses=Studentcourse.all
-	  @student = Student.new	
-	  @course=Studentcourse.new
+	 	@student = Student.new 
 	end
 	 def create
    	 @student = Student.new(student_params)

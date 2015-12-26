@@ -10,9 +10,12 @@ class TasksController < ApplicationController
 	end
 	def create
 		@task = Task.new(task_params)
+		@milestone = @task.milestone
 		@task.project_id = @task.milestone.project.id
 		if @task.save
-			redirect_to project_milestone_path(@milestone.project_id,@milestone)
+		   redirect_to project_milestone_path(@milestone.project_id,@milestone), notice: "Successfully added new milestone."
+
+			#redirect_to tasks_path
 		else
 			render action: "new"
 		end

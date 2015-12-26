@@ -1,4 +1,4 @@
 class Assignment < ActiveRecord::Base
-	belongs_to :project
-	belongs_to :student
+	belongs_to :project, dependent: :destroy
+	belongs_to :student, dependent: :destroy
 end

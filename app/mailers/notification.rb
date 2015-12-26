@@ -5,10 +5,24 @@ class Notification < ApplicationMailer
   #
   #   en.notification.project_assigned.subject
   #
-  def project_assigned(project)
-   @project = project
-   student_email= project.student.email
-   mail to: "#{student_email}", subject: "project assigned - {#{student.project.name}}"
+ 
+  def self.send_request(project)
+      @project = project
+    emails = ["#{@project.students.pluck(:email)}"]
+
+    emails.each do |email|
+      new_request(email,project).deliver_now
+      # or
+      #new_request(email,row).deliver_later
+
+    end
+  end
+
+  def new_request(email, project)
+    @item = project
+
+    mail(to: email, subject: 'New request')
+
   end
 
 end

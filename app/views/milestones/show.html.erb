@@ -19,10 +19,11 @@
 </div>
 </div>
 
-<div>
-<%= button_to "Edit", edit_project_milestone_path(@milestone.project_id, @milestone), :class => "btn btn-primary", :method => :get %> 
-<%= button_to "Delete", project_milestone_path(@milestone.project_id, @milestone), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %> 
-</div>
+
+<%= link_to "Edit", edit_project_milestone_path(@milestone.project_id, @milestone), :class => "btn btn-primary", :method => :get %> 
+
+<%= link_to "Delete", project_milestone_path(@milestone.project_id, @milestone), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %> 
+<br/><br/>
 
 
 
@@ -32,21 +33,26 @@
 
 <%= form_for([@milestone.tasks.build]) do |f| %>
 
-
+<div class="form-group">
 	<label> Name</label><br/>
 	<%= f.text_field :name%><br/>
+</div>
 
-
+<div class="form-group">
 	<label> Due Date </label><br/>
 	<%= f.date_select :due_date%><br/>
 
-
+<div class="form-group">
 	<label> Is Completed? </label><br/>
 	<%= f.check_box :is_completed %><br/>
 
 	<%= f.hidden_field :milestone_id, value: @milestone.id %>
+</div>
+<div class="form-group">
+<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+ <i class="icon-ok icon-white"></i> Task Submit
+<% end %></div>
 
-	<%= f.submit %>
 
 
 

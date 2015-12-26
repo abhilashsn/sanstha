@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
 
 	def index 
-		@projects =  Project.all 
+		@projects =  Project.order(created_at: :desc).uniq
 		@milestones = Milestone.all
 		@tasks = Task.all
 		@projects_count=Project.count
@@ -20,11 +20,18 @@ class ProjectsController < ApplicationController
 		@project = Project.new(project_params)
 
 		if @project.save
-			Notification.project_assigned(@project).deliver!
+
+			Notification.send_request(@project)
+
 			redirect_to projects_path, notice: "Successfully added new project."
 		else
 			render action: "new"
 		end
+	end
+
+	def assign_student
+		@project = Project.find_by_id(params[:id])
+		@assigned_student = @project.student_id.split(",") unless @project.student_id.nil?
 	end
 
 	def edit

@@ -42,3 +42,16 @@
 <br/>
 
 <%= button_to "Add course", new_course_path, :class => "btn btn-primary", :method => :get %>
+
+
+
+<% if current_user.email == "admin1@gmail.com"%>
+<%= current_user.email%>
+<%else%>
+<% Course.all.each do |course| %>
+<%= course.name%>
+<%end%>
+
+<%end%>
+
+

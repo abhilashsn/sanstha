@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :tutors
   resources :syllabuses
+  resources :users_admin, :controller => 'users' 
   get 'tasks/mark_as_complete'
   get 'tasks/mark_as_incomplete'
 

@@ -4,7 +4,11 @@
 	}
 </style>
 <div class="header">
-<h3><%= @student.name.capitalize%></h3>
+<h3><%= student_details%></h3>
+<%#= weekday%>
+
+  <%#=scope :having_flat_wheels, joins(:wheels).where("wheels.flat=?", true).uniq%>
+
 
 	<h4>	<span class="label label-info text-muted">
 			<%=mail_to @student.email%>
@@ -56,7 +60,7 @@
 
 
 <div class="panel panel-primary">
-<div class="panel-heading"><h3>Course Listing</h3></div>
+<div class="panel-heading"><h3>Course Listing (<%= @student.courses.count%>)</h3></div>
 <div class="panel-body">
 
 <div class="table-responsive" style=" width: 100%; margin: 0; overflow-y: auto; ">
@@ -79,7 +83,6 @@
 			<th><%=student.duration%></th>
 			<th><%=student.course_type%></th>
 			
-
 		</tr>
 		<%end %>
 	</body>
@@ -90,7 +93,7 @@
 
 
 <div class="panel panel-danger">
-<div class="panel-heading"><h3>Batches Listing</h3></div>
+<div class="panel-heading"><h3>Batches Listing (<%= @student.batches.count%>)</h3></div>
 <div class="panel-body">		
 
 
@@ -123,6 +126,37 @@
 </table>
 </div>
 	</div>
+</div>
+</div>
+
+
+
+<div class="panel panel-primary">
+<div class="panel-heading"><h3>Student Project Listing (<%= @student.projects.count%>)</h3></div>
+<div class="panel-body">
+
+<div class="table-responsive" style=" width: 100%; margin: 0; overflow-y: auto; ">
+<table class="table table-bordered table-hover table-condensed " style="height:50px; ">
+	<thead>
+		<tr>
+			<th>Sl No</th>
+			<th>Name</th>
+			<th>Course Type</th>
+		</tr>
+	</thead>
+	<body>
+		<% @student.projects.each_with_index do |student,index| %>
+		<tr>
+			<th><%=index+1%></th>
+			<th><%=student.name%></th>
+			<th>
+				<%= student.name%>
+				</th>	
+		</tr>
+		<%end %>
+	</body>
+</table>
+</div>
 </div>
 </div>
 

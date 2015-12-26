@@ -1,5 +1,5 @@
 class Studentsource < ActiveRecord::Base
 
-	belongs_to :student
-	belongs_to :source
+	belongs_to :student, dependent: :destroy
+	belongs_to :source, dependent: :destroy
 end

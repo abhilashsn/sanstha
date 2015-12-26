@@ -12,6 +12,7 @@
 		<tr>
 		<th>sl</th>
 			<th>Name</th>
+			<th>Student Count</th>
 			<th>Start date</th>
 			<th>End Date</th>
 			<th>Instruction Type</th>
@@ -26,6 +27,7 @@
              <tr>
                   <td><%= index + 1 %></td>
                   <td><%= link_to batch.name, batch %></td>
+                  <td><%= batch.students.count%></td>
                   <td><%= batch.start_date.try(:strftime,'%A, %d, %B, %Y') %></td>
                   <td><%= batch.end_date.try(:strftime,'%A, %d, %B, %Y') %></td>
                   <td><%= batch.instruction_type %></td>

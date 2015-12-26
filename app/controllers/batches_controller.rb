@@ -4,12 +4,12 @@ class BatchesController < ApplicationController
 
 
 	def index
-		@batches = Batch.all
+		#   @projects = current_user.admin? ? Project.all : current_user.projects
+	    @batches = Batch.order("created_at DESC").uniq
 	end
 
 	def new
 		@batch = Batch.new
-		
 	end
 
 	def create
